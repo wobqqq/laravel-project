@@ -1,0 +1,38 @@
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# IDE
+.idea/
+.vscode/
+
+# Laravel
+*.env.*
+README.md
+
+storage/app/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/framework/testing/*
+storage/logs/*
+bootstrap/cache/*
+
+tests/
+phpunit.xml
+
+# Packages
+vendor/
+.scribe
+_ide_helper.php
+.phpstorm.meta.php
+.phpunit.result.cache
+.editorconfig
+duster.json
+phpstan.neon
+
+# Docker
+.dockerignore
+docker/
+docker-compose.*

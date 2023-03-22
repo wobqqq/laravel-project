@@ -6,19 +6,26 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "cviebrock/eloquent-sluggable": "^10.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.0",
-        "laravel/sanctum": "^3.2",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "tymon/jwt-auth": "^2.0"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.13",
+        "enlightn/security-checker": "^1.10",
         "fakerphp/faker": "^1.9.1",
+        "knuckleswtf/scribe": "^4.16",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
+        "nunomaduro/larastan": "^2.4",
+        "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^10.0",
-        "spatie/laravel-ignition": "^2.0"
+        "spatie/laravel-ignition": "^2.0",
+        "tightenco/duster": "^1.0"
     },
     "autoload": {
         "psr-4": {
@@ -33,6 +40,69 @@
         }
     },
     "scripts": {
+        "db.create.test": "@php artisan migrate --env=testing --force",
+        "code.ide-helper.generate": "@php artisan ide-helper:generate",
+        "code.ide-helper.models": "@php artisan ide-helper:models --dir='app' --write --reset --quiet",
+        "code.ide-helper.meta": "@php artisan ide-helper:meta",
+        "code.duster.fix": "duster fix",
+        "code.duster.lint": "duster lint",
+        "code.php-stan": "@phpstan analyse --memory-limit=512M",
+        "code.fix": [
+            "@code.ide-helper.generate",
+            "@code.ide-helper.models",
+            "@code.ide-helper.meta",
+            "@code.duster.fix"
+        ],
+        "code.analyse": [
+            "@code.duster.lint",
+            "@code.php-stan"
+        ],
+        "code.fix_and_analyse": [
+            "@code.fix",
+            "@code.analyse"
+        ],
+        "test": [
+            "@project.clear",
+            "@php -r \"file_exists('.env.testing') || copy('.env.example', '.env.testing');\"",
+            "@project.generate.keys",
+            "@db.create.test",
+            "@php artisan test --coverage --min=90"
+        ],
+        "project.fix": [
+            "@code.fix",
+            "@project.generate.api-docs"
+        ],
+        "project.analyse": [
+            "composer validate",
+            "composer diagnose",
+            "security-checker security:check ./composer.lock",
+            "@code.analyse",
+            "@test"
+        ],
+        "project.fix_and_analyse": [
+            "@project.fix",
+            "@project.analyse"
+        ],
+        "project.clear": [
+            "@php artisan cache:clear",
+            "@php artisan config:cache",
+            "@php artisan config:clear"
+        ],
+        "project.local.init": [
+            "composer install",
+            "@php artisan migrate",
+            "@project.clear",
+            "@code.ide-helper.generate",
+            "@code.ide-helper.meta"
+        ],
+        "project.generate.api-docs": [
+            "@db.create.test",
+            "@php artisan scribe:generate --env=testing --quiet"
+        ],
+        "project.generate.keys": [
+            "@php artisan key:generate --ansi",
+            "@php artisan jwt:secret --ansi --force"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"

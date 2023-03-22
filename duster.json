@@ -1,0 +1,9 @@
+{
+    "include": [
+        "app",
+        "config",
+        "database",
+        "routes",
+        "tests"
+    ]
+}

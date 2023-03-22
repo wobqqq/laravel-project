@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Support\Str;
 
 return [
@@ -104,7 +106,6 @@ return [
     | that reason, you may prefix every cache key to avoid collisions.
     |
     */
-
-    'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_cache_'),
+    'prefix' => env('CACHE_PREFIX', Str::slug((string) strval(env('APP_NAME', 'laravel')), '_') . '_cache_'),
 
 ];
