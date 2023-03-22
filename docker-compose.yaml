@@ -1,0 +1,59 @@
+version: "3.8"
+
+networks:
+  laravel_app_name:
+    driver: bridge
+
+volumes:
+  database: ~
+
+services:
+
+  nginx:
+    container_name: laravel_app_name-nginx
+    image: laravel_app_name/nginx:${IMAGE_TAG:-latest}
+    build:
+      context: ./docker/nginx
+      args:
+        IMAGE_TAG: ${IMAGE_TAG:-latest}
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "80:80"
+    networks:
+      - laravel_app_name
+    depends_on:
+      - php-fpm
+      - mysql
+
+  php-fpm:
+    container_name: laravel_app_name-php-fpm
+    image: laravel_app_name/php-fpm:${IMAGE_TAG:-latest}
+    build:
+      dockerfile: docker/php-fpm/Dockerfile
+      context: .
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+        APP_ENV: ${APP_ENV:-}
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    volumes:
+      - .:/var/www/html
+    networks:
+      - laravel_app_name
+    depends_on:
+      - mysql
+
+  mysql:
+    container_name: laravel_app_name-mysql
+    image: mysql:8.0.32
+    ports:
+      - ${MYSQL_PORT:-3306}:3306
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE:-}
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - database:/var/lib/mysql
+    networks:
+      - laravel_app_name
