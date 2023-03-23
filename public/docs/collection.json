@@ -1,0 +1,1135 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost"
+        }
+    ],
+    "info": {
+        "name": "Laravel",
+        "_postman_id": "ba1306b5-5903-42fc-9e92-4139ea310f1c",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Admin",
+            "description": "",
+            "item": [
+                {
+                    "name": "Category",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "Get categories",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/admin\/categories",
+                                    "query": [
+                                        {
+                                            "key": "page",
+                                            "value": "1",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "sort_by",
+                                            "value": "id",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "sort_direction",
+                                            "value": "desc",
+                                            "description": "Available \"asc\" or \"desc\"",
+                                            "disabled": false
+                                        }
+                                    ],
+                                    "raw": "{{baseUrl}}\/api\/v1\/admin\/categories?page=1&sort_by=id&sort_direction=desc"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"page\":4,\"sort_by\":\"asperiores\",\"sort_direction\":\"exercitationem\"}"
+                                },
+                                "description": ""
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\"data\":[{\"id\":6,\"name\":\"Quia ipsam rerum.\",\"slug\":\"hic-itaque-quia-consectetur-nostrum-sed-deserunt-dolorum-tempora\",\"created_at\":\"2023-03-22 09:54:31\",\"updated_at\":\"2023-03-22 09:54:31\"},{\"id\":7,\"name\":\"Similique.\",\"slug\":\"qui-aspernatur-debitis-incidunt-id-autem-itaque\",\"created_at\":\"2023-03-22 09:54:31\",\"updated_at\":\"2023-03-22 09:54:31\"}]}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Create category",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/admin\/categories",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/v1\/admin\/categories"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"name\":\"Et ipsum quo ipsam\",\"slug\":\"harum-velit-ex-et\"}"
+                                },
+                                "description": ""
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 201,
+                                    "body": "{\"data\":{\"id\":8,\"name\":\"Architecto.\",\"slug\":\"ea-qui-modi-dolores-saepe\",\"created_at\":\"2023-03-22 09:54:31\",\"updated_at\":\"2023-03-22 09:54:31\"}}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Get category",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/admin\/categories\/:category_id",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/v1\/admin\/categories\/:category_id",
+                                    "variable": [
+                                        {
+                                            "id": "category_id",
+                                            "key": "category_id",
+                                            "value": "9",
+                                            "description": "The ID of the category."
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": ""
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\"data\":{\"id\":9,\"name\":\"Veritatis.\",\"slug\":\"ut-occaecati-voluptatibus-ab-nulla\",\"created_at\":\"2023-03-22 09:54:31\",\"updated_at\":\"2023-03-22 09:54:31\"}}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Update category",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/admin\/categories\/:category_id",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/v1\/admin\/categories\/:category_id",
+                                    "variable": [
+                                        {
+                                            "id": "category_id",
+                                            "key": "category_id",
+                                            "value": "16",
+                                            "description": "The ID of the category."
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"name\":\"Et ipsum quo ipsam\",\"slug\":\"harum-velit-ex-et\"}"
+                                },
+                                "description": ""
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\"data\":{\"id\":10,\"name\":\"Occaecati quae.\",\"slug\":\"voluptate-in-suscipit-voluptas-voluptate-harum-quo-eius\",\"created_at\":\"2023-03-22 09:54:31\",\"updated_at\":\"2023-03-22 09:54:31\"}}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Delete category",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/admin\/categories\/:category_id",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/v1\/admin\/categories\/:category_id",
+                                    "variable": [
+                                        {
+                                            "id": "category_id",
+                                            "key": "category_id",
+                                            "value": "8",
+                                            "description": "The ID of the category."
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": ""
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 204,
+                                    "body": "null",
+                                    "name": ""
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Tag",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "Get tags",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/admin\/tags",
+                                    "query": [
+                                        {
+                                            "key": "page",
+                                            "value": "1",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "sort_by",
+                                            "value": "id",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "sort_direction",
+                                            "value": "desc",
+                                            "description": "Available \"asc\" or \"desc\"",
+                                            "disabled": false
+                                        }
+                                    ],
+                                    "raw": "{{baseUrl}}\/api\/v1\/admin\/tags?page=1&sort_by=id&sort_direction=desc"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"page\":5,\"sort_by\":\"et\",\"sort_direction\":\"quo\"}"
+                                },
+                                "description": ""
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\"data\":[{\"id\":4,\"name\":\"ipsum\",\"created_at\":\"2023-03-22 09:54:31\",\"updated_at\":\"2023-03-22 09:54:31\"},{\"id\":5,\"name\":\"adipisci\",\"created_at\":\"2023-03-22 09:54:31\",\"updated_at\":\"2023-03-22 09:54:31\"}]}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Create tag",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/admin\/tags",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/v1\/admin\/tags"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"name\":\"Magni\"}"
+                                },
+                                "description": ""
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 201,
+                                    "body": "{\"data\":{\"id\":6,\"name\":\"inventore\",\"created_at\":\"2023-03-22 09:54:31\",\"updated_at\":\"2023-03-22 09:54:31\"}}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Get tag",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/admin\/tags\/:tag_id",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/v1\/admin\/tags\/:tag_id",
+                                    "variable": [
+                                        {
+                                            "id": "tag_id",
+                                            "key": "tag_id",
+                                            "value": "9",
+                                            "description": "The ID of the tag."
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": ""
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\"data\":{\"id\":7,\"name\":\"incidunt\",\"created_at\":\"2023-03-22 09:54:31\",\"updated_at\":\"2023-03-22 09:54:31\"}}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Update tag",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/admin\/tags\/:tag_id",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/v1\/admin\/tags\/:tag_id",
+                                    "variable": [
+                                        {
+                                            "id": "tag_id",
+                                            "key": "tag_id",
+                                            "value": "20",
+                                            "description": "The ID of the tag."
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"name\":\"Magni\"}"
+                                },
+                                "description": ""
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\"data\":{\"id\":8,\"name\":\"eligendi\",\"created_at\":\"2023-03-22 09:54:31\",\"updated_at\":\"2023-03-22 09:54:31\"}}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Delete tag",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/admin\/tags\/:tag_id",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/v1\/admin\/tags\/:tag_id",
+                                    "variable": [
+                                        {
+                                            "id": "tag_id",
+                                            "key": "tag_id",
+                                            "value": "18",
+                                            "description": "The ID of the tag."
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": ""
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 204,
+                                    "body": "null",
+                                    "name": ""
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Post",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "Get posts",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/admin\/posts",
+                                    "query": [
+                                        {
+                                            "key": "page",
+                                            "value": "1",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "sort_by",
+                                            "value": "id",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "sort_direction",
+                                            "value": "desc",
+                                            "description": "Available \"asc\" or \"desc\"",
+                                            "disabled": false
+                                        }
+                                    ],
+                                    "raw": "{{baseUrl}}\/api\/v1\/admin\/posts?page=1&sort_by=id&sort_direction=desc"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"page\":10,\"sort_by\":\"earum\",\"sort_direction\":\"voluptates\"}"
+                                },
+                                "description": ""
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\"data\":[{\"id\":4,\"title\":\"Non ut quis qui.\",\"slug\":\"voluptates-sapiente-voluptas-sequi-quis-natus-dolore\",\"status\":2,\"category_id\":11,\"preview_text\":\"Dolor rerum repudiandae ea. Et harum harum ad odio eos quidem quaerat. Reiciendis facilis facere consequatur. Deserunt molestiae minus alias. Eos labore ut optio aut dolorem in quia. Dicta dolorem voluptatem sint non id qui. Veritatis rerum non molestiae nemo. Placeat et assumenda libero numquam nam adipisci. Ullam laboriosam ipsa fuga est ut. Impedit ipsum qui dolor praesentium. Blanditiis quos rerum vitae nostrum.\",\"content\":\"Nesciunt ut quo quia. Esse corporis suscipit architecto. Repudiandae placeat dolor ipsa corrupti temporibus beatae sint. Iste aut facere consectetur quisquam. Corporis quidem nam repellat aut. Totam sit soluta laborum impedit qui in eos. Consequatur nobis cupiditate harum voluptas sunt et sint. Non necessitatibus totam nemo praesentium inventore aperiam sed. Deleniti vel nemo voluptatibus. Eum consequatur facilis sit voluptate id ut quidem. Animi similique dolore sapiente dolores aperiam. Aut enim vero voluptatem eum. Voluptatem recusandae qui ea reprehenderit suscipit. Quibusdam sed sit recusandae in aut culpa modi. Doloremque vel atque ipsa consequuntur enim qui facere. Inventore necessitatibus in ad non sit. Est qui dolor minus. Error accusamus quis quia amet in. Non voluptas praesentium sint labore qui sequi. Eum totam aut non. Molestias inventore molestiae error expedita illo sit consequuntur. Excepturi velit et et reiciendis libero. Voluptatum occaecati voluptas aut aperiam nulla ut. Qui et at quis voluptatibus. Voluptatem omnis ipsam sint nemo sit excepturi. Facilis sapiente id quasi asperiores. Modi laudantium quia quo dolores. Voluptates molestias aperiam aspernatur minima. Quam occaecati labore est. Eum libero quis dolorum voluptatem. Quo assumenda enim aut illo temporibus sequi. Dolorum molestiae accusamus architecto ea voluptas minus. Ipsa omnis tempora corporis aliquam aut repellendus quia. Expedita in magnam porro deleniti eum eaque at. Fugit ipsum non quia nam porro et. Et necessitatibus expedita rem alias magni eveniet quidem. Est nesciunt sit consectetur aut laboriosam doloribus. Explicabo et aliquam consequatur qui non. Velit assumenda aut hic debitis fugit. Dolorem voluptate praesentium animi. In sunt optio iure necessitatibus sit expedita maiores. Optio eos quo animi qui. Reiciendis nostrum fuga iusto. Inventore dignissimos sunt dolorem omnis quasi dolore. Voluptas harum sequi quod beatae. Veritatis distinctio nihil voluptatem autem. Expedita maiores pariatur reprehenderit sunt. Qui dolorum quae voluptatum veniam. Est voluptatem exercitationem vitae delectus amet. Enim quibusdam laudantium accusamus. Quia aliquam blanditiis iusto sed doloremque. Non repellendus similique et dolorum quidem ad facilis. Mollitia et nobis et itaque. Molestias est ea debitis laboriosam qui quas. Vel tenetur debitis quis. Nobis illum reprehenderit repudiandae. Delectus nostrum vero saepe magnam nihil. Labore quod repellat et dolorum consequuntur tempora sequi. Dolorem odio eius qui voluptatum. Aut doloremque et et incidunt eos minus perspiciatis consequuntur. Blanditiis sit quia cumque at. Amet velit in asperiores perspiciatis qui. Qui soluta molestias consequatur dicta. Ipsam dolores ut enim non quam et eaque. Sint fugiat harum ut nemo magni. Sed qui atque natus quisquam. Aut quis qui neque quibusdam numquam nostrum dolor et. Officia inventore nobis et earum animi.\",\"is_hot\":true,\"created_at\":\"2023-03-22 09:54:31\",\"updated_at\":\"2023-03-22 09:54:31\",\"published_at\":\"2022-11-26 12:13:21\",\"tag_ids\":[]},{\"id\":5,\"title\":\"Rem et odit.\",\"slug\":\"debitis-excepturi-facere-qui-eos-sit\",\"status\":2,\"category_id\":11,\"preview_text\":\"Optio ut in omnis voluptas aut. Enim sed asperiores tempora nihil dolorem. Dolor officia porro earum omnis consequatur. Rerum enim laboriosam est sed sint corporis non. Ratione recusandae cupiditate saepe eaque. Temporibus ut atque consequatur rerum mollitia. Quis distinctio fugiat praesentium beatae. Et est et quae non molestias quos atque. Dicta aut a quo. Nemo hic laboriosam sed laborum architecto reprehenderit sunt optio.\",\"content\":\"Asperiores provident fugit sed voluptas eum. Voluptates porro est deserunt et sit nobis maxime quas. Qui optio omnis dolorem corporis. Harum a dolore nam quia repellendus ut. Et ipsa sed nisi. Eum voluptatem quia itaque. Et est et nihil explicabo quaerat maiores assumenda cumque. Et enim nihil consectetur maiores odit. Qui et debitis consectetur in placeat beatae. Quos magnam perferendis in id. Veritatis debitis qui nesciunt odio dolores. Quibusdam maxime et aliquid qui et perspiciatis quo. Officia sed minima ipsa ut omnis. Qui ratione qui in nihil rem. Consectetur voluptatem sit magni quia omnis dolorum nulla. Pariatur molestiae blanditiis et est sed. Cumque quae suscipit quia ut quos eveniet. Ab magni omnis sint eum quo. Pariatur cumque non culpa sed tenetur voluptatem. Aut numquam aperiam aliquid voluptas. Provident sed enim laborum maxime. Nihil non itaque expedita nemo sapiente. Quod beatae provident veritatis beatae. Quaerat molestiae saepe culpa sit aut qui. A voluptas in aperiam. Quasi architecto a nemo enim quae est delectus. Est odit qui adipisci qui sed a cumque. Libero iste pariatur placeat eum. Sapiente deleniti ea placeat voluptate illo. Voluptates maxime error ut velit. Doloribus ut et animi voluptatem debitis eius eum fuga. Adipisci et architecto quis sunt. Nostrum hic sed tempore illum optio. Eum natus alias quis explicabo debitis. Odio soluta quia id nostrum. Voluptatem doloribus aut dolores cupiditate dolorum voluptas. Minus harum sapiente nam natus. Non id animi ullam voluptatem fuga. Eum quis qui dolorem sit aliquam quis magnam corporis. Iste dolorem minima quas fuga illo eum. Voluptatem aut facere fugit quis dolorem quibusdam. Totam voluptate et necessitatibus ut sit id. Placeat quia natus est qui. Nam minima exercitationem sit qui impedit aliquid qui. Sed esse voluptatibus officia libero voluptatem. Quia occaecati enim voluptatem non. Nihil quod maxime nemo. Nulla corporis sunt ullam est iste. Aspernatur non dolores aut. Qui est nesciunt cum nobis sit rerum rem. Et iure magni autem aspernatur molestias. Et incidunt impedit provident eveniet aut repudiandae sed. Voluptate odio id nesciunt voluptatem quasi voluptatibus voluptatem. Non provident et distinctio atque quia. Ipsa suscipit id occaecati quidem blanditiis. Accusamus atque et soluta consequuntur sint. Qui cupiditate sunt architecto molestias ad modi. Nobis fuga labore quae quod. Adipisci nemo earum numquam distinctio dicta. Assumenda a voluptatem rem suscipit non ut. Ullam ducimus sapiente reprehenderit assumenda. Ad aut enim ad labore esse quas beatae. Dolore enim iure qui ipsa. Veniam eligendi quo corporis natus officiis quis aperiam temporibus. Eos sed rem qui eum sunt dolor. Dolores saepe quisquam nihil repellat dolores. Commodi est eius aperiam veniam sapiente sed. Et molestiae architecto enim quasi alias. Sequi illum eum fuga facere accusamus. Non autem error enim ullam numquam recusandae.\",\"is_hot\":false,\"created_at\":\"2023-03-22 09:54:31\",\"updated_at\":\"2023-03-22 09:54:31\",\"published_at\":\"2021-04-25 00:15:38\",\"tag_ids\":[]}]}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Get status",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/admin\/posts\/status",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/v1\/admin\/posts\/status"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": ""
+                            },
+                            "response": [
+                                {
+                                    "header": [
+                                        {
+                                            "key": "cache-control",
+                                            "value": "no-cache, private"
+                                        },
+                                        {
+                                            "key": "content-type",
+                                            "value": "application\/json"
+                                        },
+                                        {
+                                            "key": "access-control-allow-origin",
+                                            "value": "*"
+                                        }
+                                    ],
+                                    "code": 401,
+                                    "body": "{\"message\":\"Unauthenticated.\",\"errors\":null}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Create post",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/admin\/posts",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/v1\/admin\/posts"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"title\":\"Suscipit id nulla\",\"category_id\":1,\"status\":1,\"preview_text\":\"Quo voluptatibus numquam impedit consequatur nemo perspiciatis asperiores.\",\"content\":\"Et est saepe sapiente id qui. Magnam et sequi error eos enim non praesentium.\",\"is_hot\":null,\"tag_ids\":\"1, 2, 3\",\"published_at\":\"2021-06-22 10:29:39\"}"
+                                },
+                                "description": ""
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 201,
+                                    "body": "{\"data\":{\"id\":6,\"title\":\"Ea iure beatae est.\",\"slug\":\"voluptas-libero-nihil-consequatur-porro-non-dolores\",\"status\":1,\"category_id\":12,\"preview_text\":\"Illum aspernatur fugit qui reprehenderit amet perferendis. Et sit cum beatae sed ex. Iusto dolorem laborum aperiam id. Quia et ut explicabo tempore. Id quis eveniet quibusdam qui vero nobis voluptatum. Eaque cumque exercitationem autem eveniet aut sint inventore ut. Aliquam earum voluptate porro nihil. Quasi laudantium eum id qui delectus repellendus. Neque id ducimus temporibus vero. Pariatur ab iure rerum dolorem.\",\"content\":\"Nihil non nobis magnam sequi sapiente at. Modi unde nesciunt deleniti unde consectetur qui eos. Sit aut ut ut neque. Provident fugit sunt tenetur ab in perspiciatis asperiores. Ut voluptatem veniam eos nulla. Dolor itaque quam ex veritatis. Eum cupiditate voluptas neque totam atque. Tenetur maiores autem unde sit. Est ipsam nostrum libero iste dolore maxime perspiciatis. Quos impedit minima qui dignissimos ut et totam. Illo id eveniet eos culpa sint laborum. Qui vel excepturi sed laborum. Quis debitis sit amet iste nihil neque. Non sint eum aperiam similique. Non nam eum culpa repellat. Qui est assumenda id accusantium. Quod facere voluptatem praesentium repudiandae est dicta et. Deleniti eligendi neque quae quidem aut non quis voluptate. Doloribus eius qui molestias nemo dicta. Tempore omnis aliquam aut. Consequatur non in quia atque qui velit veritatis. Ipsa cum itaque et dolorum tempore vel sit. Ea cupiditate ullam libero cum omnis. Nemo tempore veritatis cupiditate suscipit ut ipsum temporibus iste. Ad aliquid voluptatum enim quibusdam. Aut esse necessitatibus et nostrum dignissimos velit corporis. Facere non qui voluptas voluptas ducimus molestiae occaecati. Ea qui aut vitae et temporibus veritatis beatae officia. Quas nesciunt autem doloribus et doloremque iure aut cupiditate. Facilis fuga in aspernatur. Nam in quidem alias natus soluta dolorum. Velit et itaque excepturi velit unde illum ut. Quia repellendus ipsum autem quaerat impedit. Non maiores laborum id. Impedit ut itaque in consectetur mollitia voluptas libero. Omnis doloremque culpa reiciendis impedit. Est libero voluptatem mollitia deserunt. Fugit rerum eligendi dolorum ex dolorum ad dicta. Quis ut sunt alias dolor. A velit est quae ipsam optio qui omnis. Et ut tenetur autem sed labore veritatis consequatur. Consequuntur animi sapiente voluptatem quae ex illum sint. Tenetur ipsam quidem quo. Qui unde illo aperiam hic. Facilis odit impedit consequuntur. Dolores est minus ut dolore est itaque. Ut assumenda laborum exercitationem officiis cupiditate dolores ratione inventore. Enim consequatur vero recusandae saepe. Ad eum consequatur voluptas iure. Pariatur debitis consequatur ad quo. Quaerat maxime ipsam quis veniam inventore. Consequuntur corrupti nisi et molestias. Illum eveniet officiis atque ab consequuntur enim sed repellendus. Ullam itaque aut consectetur voluptatem officiis voluptatem. Numquam pariatur voluptas quas reprehenderit hic dolor cum. Illo repudiandae est et velit fugit illo rerum quia. Error consequatur aliquid aspernatur est eveniet. Dolore rerum commodi non repellat ut rerum. Ad vero neque accusamus consequatur corporis. Facere dolor placeat autem sint et quisquam doloremque. Beatae dolorem eum tempore deserunt autem. Consequatur quibusdam voluptatem dolorem quo ducimus ut aliquam et. Sapiente non sint nihil corporis labore. Nesciunt quam dolorem asperiores et ut recusandae deserunt. Ut iste necessitatibus quia laboriosam labore et minus.\",\"is_hot\":false,\"created_at\":\"2023-03-22 09:54:32\",\"updated_at\":\"2023-03-22 09:54:32\",\"published_at\":\"2021-09-26 18:10:43\",\"tag_ids\":[]}}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Get post",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/admin\/posts\/:post_id",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/v1\/admin\/posts\/:post_id",
+                                    "variable": [
+                                        {
+                                            "id": "post_id",
+                                            "key": "post_id",
+                                            "value": "3",
+                                            "description": "The ID of the post."
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": ""
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\"data\":{\"id\":7,\"title\":\"Eum laudantium quae.\",\"slug\":\"fugiat-facilis-facere-perspiciatis-temporibus-suscipit\",\"status\":1,\"category_id\":13,\"preview_text\":\"Cum doloremque repellendus modi tempora distinctio qui. Voluptatem perferendis eveniet maxime cupiditate et. Et qui consectetur est facere blanditiis reprehenderit perferendis. Non eum alias est nobis. Rerum officiis ipsam non nulla repellat dolor quisquam. Est atque nobis eligendi qui quasi in aspernatur eum. Et voluptatem quia impedit dolores aliquid. Et quos voluptate quia vitae fuga incidunt in facere.\",\"content\":\"Repudiandae dolore similique nostrum velit aliquam. Sit voluptas nesciunt repellat qui architecto aliquam quia. Ut vero totam eum accusamus. Vel aperiam ut odio fugiat enim eaque omnis. Beatae saepe quia non. Et ipsa repudiandae architecto. Quibusdam ut culpa sed quidem consequatur. Provident doloribus impedit occaecati magni ipsum. Et dicta id libero beatae eaque qui laboriosam. Maiores eum eos et voluptates quia minus. Eius hic molestiae provident officia reprehenderit natus. Nostrum vel consequatur laboriosam aliquid optio aut. Quis et sed cupiditate praesentium. Atque ipsa voluptas provident. Consequatur vero est veritatis sed sequi fuga. Consequuntur nostrum est omnis voluptatem et fuga. Eveniet aut voluptatem quia. Ipsum qui vitae vel. Aut recusandae voluptate qui et et aut et ducimus. Deleniti magni ratione harum dolor ut quidem. Ducimus non ab delectus. Aut ea voluptas dolores consequuntur autem excepturi possimus. Ut ipsum quo sunt fuga optio illum. Amet explicabo nihil nihil rem assumenda. Blanditiis repellendus unde hic nemo qui aut. Autem aut aut deserunt alias quis sunt ab. Voluptatum porro deserunt dolorem dolor nam soluta quis facere. Beatae nulla sequi sed facere aut accusantium odit. Mollitia fugit quia magnam voluptatem sit tempore omnis. Quibusdam magni voluptatum dicta a rem odit quod. Quo iure doloremque deserunt. Quis repudiandae repellat blanditiis aliquam qui. Earum consequatur saepe fugiat autem sit optio. Dignissimos perferendis consequatur facere occaecati dolor assumenda. Sunt et porro odio quo. Libero animi veniam iure sed repellendus. Quaerat hic assumenda eos aut. Aut quo veniam accusamus temporibus. Repellat molestiae natus exercitationem dolorum recusandae vitae voluptatum libero. Ut adipisci et velit illo ex. Sed corporis dolorem esse doloremque exercitationem ex architecto. Optio omnis nam eveniet sit voluptatem est. Qui eum suscipit animi vero veritatis. Dicta voluptatem aut atque eum aliquid modi. Quod et dolor officia corrupti. Doloremque et sit sit possimus dolorem sed. Dignissimos quibusdam impedit repudiandae occaecati odio consequatur. Molestiae et sit quidem dolorem provident repudiandae. Dolorum animi est possimus porro culpa. Voluptates a dolores eveniet saepe suscipit. Aut eligendi libero dolores voluptatum. Aut atque officia libero sit aut sit. Qui aut ut aut saepe quia in. Molestias amet ullam placeat eos. Voluptatibus vitae laudantium rerum. Consequatur doloribus et enim. Quia rem velit sint assumenda est quibusdam ipsa. Quasi voluptate suscipit sit eos. Omnis expedita sed nemo id consequatur. Suscipit et dolores aut magnam. Corporis necessitatibus id architecto similique eum. Qui inventore ipsum minima numquam non vel. Ea quia aut ut voluptates quasi maxime tempora. Fugiat qui dolore dolores est maxime voluptatem enim est. Occaecati aliquid et laboriosam laborum voluptas voluptate quo. Fuga facere expedita est sit vero fugiat inventore aut.\",\"is_hot\":false,\"created_at\":\"2023-03-22 09:54:32\",\"updated_at\":\"2023-03-22 09:54:32\",\"published_at\":\"2021-06-29 09:01:36\",\"tag_ids\":[]}}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Update post",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/admin\/posts\/:post_id",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/v1\/admin\/posts\/:post_id",
+                                    "variable": [
+                                        {
+                                            "id": "post_id",
+                                            "key": "post_id",
+                                            "value": "2",
+                                            "description": "The ID of the post."
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"title\":\"Suscipit id nulla\",\"slug\":\"qui-cum-laboriosam-eum-nostrum-deleniti\",\"status\":1,\"category_id\":1,\"preview_text\":\"Quo voluptatibus numquam impedit consequatur nemo perspiciatis asperiores.\",\"content\":\"Et est saepe sapiente id qui. Magnam et sequi error eos enim non praesentium.\",\"is_hot\":null,\"tag_ids\":\"1, 2, 3\",\"published_at\":\"2021-06-22 10:29:39\"}"
+                                },
+                                "description": ""
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\"data\":{\"id\":8,\"title\":\"Ab at et doloribus.\",\"slug\":\"inventore-dolorem-dolores-aliquid-aut\",\"status\":1,\"category_id\":14,\"preview_text\":\"Quidem amet dolorem nobis quo. Ea est qui in blanditiis qui enim magnam. Corporis asperiores officiis expedita occaecati hic itaque. Maxime voluptas libero dolores iste cum iure dicta. Est qui maxime velit nostrum impedit ex in. Est mollitia nihil sapiente accusamus corporis rerum accusamus. Blanditiis voluptatem id in qui beatae aspernatur fugiat similique.\",\"content\":\"Nobis voluptas ut qui tenetur. Quo animi ea et nam sint eum. Necessitatibus nemo maiores magnam neque eligendi sed est. Iure sunt nesciunt recusandae incidunt tempora doloribus aspernatur. Nam voluptatem consequatur fugit est. Facilis consequatur ut accusamus ut. Veniam consequatur velit ea quidem delectus ea. Quaerat libero laboriosam autem repellat magnam voluptate laudantium. Ut officiis est corporis officia rem iure facere. Quos voluptates eius atque quibusdam unde dolore ex. Quod dolor voluptas velit unde dolor iure id illum. Facilis qui ea consequatur ea repellat. Tempore consequatur ea quia ut. Sunt porro non sunt voluptate aspernatur ut et aliquid. Et consequatur et tenetur nam. Blanditiis veritatis eum tempore et voluptatum. Nisi assumenda aliquam neque perspiciatis voluptatibus porro ut officia. Corrupti itaque aut sint cumque. Quidem neque voluptatum quos velit aliquid. Iusto laboriosam molestiae aut ex. Et natus possimus incidunt numquam est quia distinctio nesciunt. Autem ea fuga accusamus labore fuga. Dolores soluta quia non a aut. Esse totam corporis et deserunt tenetur. Dolor quos culpa corporis ut corporis quo voluptatem. Omnis illo quidem nisi recusandae. Incidunt sit vel ut adipisci. Dicta ut voluptatem possimus velit modi aspernatur. Ea voluptates at omnis. Molestias asperiores ea ut sint. Tenetur nobis minus voluptates quidem iure. Cum cum inventore atque molestiae laborum. Voluptatum similique autem et consequatur maiores. Assumenda qui occaecati molestias alias molestiae temporibus. Aut dolores tempora voluptatem non et quia. Facilis aliquam voluptas et repellendus amet tempora. Quas quos dicta fuga alias fuga. Placeat autem enim numquam perspiciatis deleniti est in. Tempore voluptas debitis ut qui aut eum ut. Modi et quo commodi perspiciatis sunt iure. Veritatis qui consequatur fuga. Quam voluptates nulla eum quia molestiae voluptatum quo. Dolorem animi reiciendis iure incidunt eum perspiciatis repudiandae ab. Molestiae voluptas sequi dolor rem alias unde. Dolor a distinctio aliquid sit ut. Fuga dolor est suscipit deserunt. Ut quis doloremque est et. Accusantium molestias odit voluptatem itaque et. Omnis accusamus esse officia eligendi exercitationem consectetur commodi. Culpa consequuntur et perferendis. Illum nisi exercitationem dolor et. Enim non voluptas sunt voluptas quis sit voluptatem. Eveniet temporibus vitae consectetur vel non. Laborum eligendi earum hic necessitatibus qui voluptates optio. Earum mollitia ipsam in expedita accusamus dolore doloribus voluptatem. Ipsam consequuntur in aut illum assumenda velit omnis vero. Ducimus voluptas iure ea excepturi delectus officiis non sit. Error saepe dolorum velit consequatur. Et ab aut mollitia quisquam repudiandae vitae. Saepe facere est nihil est ducimus. Corporis velit rerum rerum quibusdam eius. Earum dolores nemo illum sunt. Vel dolor qui atque rerum. Hic et ipsa incidunt aperiam unde soluta quia. Eligendi consectetur sed ad non.\",\"is_hot\":false,\"created_at\":\"2023-03-22 09:54:32\",\"updated_at\":\"2023-03-22 09:54:32\",\"published_at\":\"2021-05-22 16:03:35\",\"tag_ids\":[]}}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Delete post",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/admin\/posts\/:post_id",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/v1\/admin\/posts\/:post_id",
+                                    "variable": [
+                                        {
+                                            "id": "post_id",
+                                            "key": "post_id",
+                                            "value": "3",
+                                            "description": "The ID of the post."
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": ""
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 204,
+                                    "body": "null",
+                                    "name": ""
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Auth",
+            "description": "",
+            "item": [
+                {
+                    "name": "POST api\/v1\/auth\/login",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/auth\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/auth\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"test@example.net\",\"password\":\"secret\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/v1\/auth\/refresh",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/auth\/refresh",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/auth\/refresh"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Client",
+            "description": "",
+            "item": [
+                {
+                    "name": "Category",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "Get categories",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/client\/categories",
+                                    "query": [
+                                        {
+                                            "key": "sort_by",
+                                            "value": "id",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "sort_direction",
+                                            "value": "desc",
+                                            "description": "Available \"asc\" or \"desc\"",
+                                            "disabled": false
+                                        }
+                                    ],
+                                    "raw": "{{baseUrl}}\/api\/v1\/client\/categories?sort_by=id&sort_direction=desc"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"sort_by\":\"non\",\"sort_direction\":\"quisquam\"}"
+                                },
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\"data\":[{\"name\":\"Ut eligendi labore.\",\"slug\":\"aut-eum-eum-quidem-laboriosam-omnis-et-maxime\"},{\"name\":\"Expedita ut itaque.\",\"slug\":\"incidunt-consequatur-sit-et-nihil\"}]}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Get category",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/client\/categories\/:category_slug",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/v1\/client\/categories\/:category_slug",
+                                    "variable": [
+                                        {
+                                            "id": "category_slug",
+                                            "key": "category_slug",
+                                            "value": "1",
+                                            "description": "The slug of the category."
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\"data\":{\"name\":\"At odit molestiae.\",\"slug\":\"sequi-repellat-nam-esse-quis\"}}",
+                                    "name": ""
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Tag",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "Get tags",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/client\/tags",
+                                    "query": [
+                                        {
+                                            "key": "sort_by",
+                                            "value": "id",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "sort_direction",
+                                            "value": "desc",
+                                            "description": "Available \"asc\" or \"desc\"",
+                                            "disabled": false
+                                        }
+                                    ],
+                                    "raw": "{{baseUrl}}\/api\/v1\/client\/tags?sort_by=id&sort_direction=desc"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"sort_by\":\"minima\",\"sort_direction\":\"quae\"}"
+                                },
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\"data\":[{\"name\":\"voluptatem\"},{\"name\":\"est\"}]}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Get tag",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/client\/tags\/:tag_id",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/v1\/client\/tags\/:tag_id",
+                                    "variable": [
+                                        {
+                                            "id": "tag_id",
+                                            "key": "tag_id",
+                                            "value": "4",
+                                            "description": "The ID of the tag."
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\"data\":{\"name\":\"et\"}}",
+                                    "name": ""
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Post",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "Get posts",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/client\/posts",
+                                    "query": [
+                                        {
+                                            "key": "is_hot",
+                                            "value": "1",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "category",
+                                            "value": "natus-ex-eos-rerum-incidunt-natus",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "tags[0]",
+                                            "value": "Voluptas.",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "tags[1]",
+                                            "value": "Quo.",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "page",
+                                            "value": "1",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "sort_by",
+                                            "value": "id",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "sort_direction",
+                                            "value": "desc",
+                                            "description": "Available \"asc\" or \"desc\"",
+                                            "disabled": false
+                                        }
+                                    ],
+                                    "raw": "{{baseUrl}}\/api\/v1\/client\/posts?is_hot=1&category=natus-ex-eos-rerum-incidunt-natus&tags[0]=Voluptas.&tags[1]=Quo.&page=1&sort_by=id&sort_direction=desc"
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"page\":7,\"sort_by\":\"eum\",\"sort_direction\":\"minima\",\"is_hot\":false,\"category\":\"eligendi\",\"tags\":[\"eum\"]}"
+                                },
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\"data\":[{\"title\":\"Voluptatem qui.\",\"slug\":\"odit-sapiente-doloribus-aliquam-ut-laborum-aut-id-consequuntur\",\"category\":{\"name\":\"Suscipit autem.\",\"slug\":\"aut-voluptate-exercitationem-sapiente\"},\"preview_text\":\"Modi vel quia deserunt velit. Ea nihil et nostrum dolorum officia rerum repellendus sit. Facilis accusamus dolor et magnam nihil illo. Deserunt et nostrum iure sequi. Sint dolorem quam error impedit quod itaque. Commodi vel facilis fugiat eligendi expedita nisi. Distinctio officia distinctio similique dolorem ut quo. Non quod aut est ut unde tenetur. Enim dignissimos nihil ab. Officiis odio voluptas consequatur ab. At sunt et molestias et ipsam ut.\",\"content\":\"Molestiae eius esse iure laborum ab ipsa. Deleniti delectus dolorem pariatur. Nihil cupiditate qui cupiditate. Dolores voluptatem sed accusantium doloremque delectus. Quo quam qui dolor alias neque sit quasi. Deserunt libero quis rem consequuntur maiores voluptatem veniam. Alias mollitia voluptas earum tempore id non. Libero in illum at omnis error nulla rerum. Unde quo occaecati natus. Ducimus debitis eius quia pariatur nobis non. Esse nisi maiores ipsam temporibus doloremque quis. Omnis dolorem omnis facere soluta. Dolorem cupiditate eos esse. Consequatur voluptatum numquam harum ipsum. Asperiores et numquam quisquam totam placeat a ut. Illo saepe commodi et possimus ipsum non ea animi. Saepe nam voluptatem delectus et omnis officia. Quos omnis dolores cum eos voluptates voluptas repudiandae. Consequatur id illum iste laudantium unde et. Fugiat ad sint nostrum quas. Sunt ipsam dolor ratione error. Suscipit sequi aut autem expedita. Assumenda sed molestias illo. Aut eius ut incidunt alias sed est. Voluptates qui sunt libero autem sint. Veritatis enim non et non ipsam et consectetur voluptas. Quis qui quia velit voluptatum dolorem. Cumque quis enim modi doloribus ipsum maxime fugit voluptatibus. Ut beatae enim amet error. Minus adipisci possimus earum ullam voluptas maiores repellendus. Neque consequatur consequatur aperiam rerum qui repellendus. Ex amet eveniet ipsa labore cum saepe magni. Impedit aut at earum ut sed qui aperiam molestiae. Ipsum dolores et quidem voluptate. Delectus autem quas ab excepturi. Ipsa et soluta fugiat labore. Et dolorem consequatur maiores molestiae beatae magni qui. Animi voluptatem rerum omnis error molestiae occaecati. Exercitationem rerum sit earum corporis eveniet corporis. Atque dolorem voluptatum sed expedita fugit. Enim ex tenetur est et. Eum culpa sed aut ullam. Vero dolore modi eos cumque dolorum. Ut modi est vel nemo. Dignissimos recusandae quo placeat ratione omnis. Quasi porro porro earum rem a dignissimos est. Et eum deleniti velit qui et recusandae dolorem. Iste praesentium non autem quasi numquam nesciunt et. Molestias ab voluptas eum aspernatur facere. Molestiae quia et qui sit illum non ut. Itaque voluptatibus molestiae aut reiciendis omnis voluptatibus et. Dolore perspiciatis repellendus praesentium. Pariatur blanditiis sed voluptas ab corrupti enim. Molestias iure libero aspernatur repudiandae eum asperiores. Qui nam asperiores iste voluptatum ut. Atque accusantium accusantium autem. Facere nesciunt in incidunt vitae reiciendis. Omnis sint inventore vitae atque est eveniet et. Quia a ex sit doloremque modi. Dolorem sed aliquid ex maxime. Voluptatem accusamus magnam explicabo. Porro in iusto suscipit adipisci. Voluptatem odit labore iure explicabo exercitationem quis. Ea deleniti est harum. Non dicta asperiores itaque et eos. Sint accusamus sint qui maxime ut.\",\"is_hot\":false,\"published_at\":\"2021-06-11 10:27:36\",\"tags\":[]},{\"title\":\"Rerum ratione.\",\"slug\":\"tenetur-ea-nihil-natus-atque-velit-nobis-aperiam\",\"category\":{\"name\":\"Suscipit autem.\",\"slug\":\"aut-voluptate-exercitationem-sapiente\"},\"preview_text\":\"Et reiciendis sunt laudantium sed veritatis. Quia dolore non aspernatur voluptatum sapiente culpa deserunt. Corporis blanditiis dolore ut ut quia consequatur. Facilis ab odio incidunt amet ex. Autem libero illum dolores consequatur ut vero. Omnis aut sit ea ut vero ipsum qui quo. Velit commodi voluptatem et. Quis ea qui facere voluptatem. Aut nemo delectus nemo porro sunt. Rerum repellat quasi nemo itaque molestiae.\",\"content\":\"Molestiae laboriosam similique sed. Corporis laudantium et laudantium quo laborum voluptatem enim culpa. Aspernatur dolores et optio inventore. Iste quae nostrum placeat. Perspiciatis quis nam quae non eveniet molestiae enim. Repudiandae ex doloremque ex accusamus aliquam. Facere eligendi ut earum ut. Cumque impedit veniam alias nesciunt. Distinctio enim rem magni commodi quidem autem quis rerum. Labore illum tempora commodi nihil amet. In voluptatem et incidunt dolor. Velit tenetur inventore ex reprehenderit aut tempore. Assumenda aperiam qui ab ut quae rerum. Facilis dolores magnam error blanditiis. Animi velit voluptate et nemo et repellat. Corporis perferendis fugiat voluptate recusandae necessitatibus nihil aut. Fugit et illum est non pariatur autem odio. Et et quo consequuntur. Iusto ut placeat eius aliquid deleniti sit. Perferendis voluptates minus qui aperiam. Quo impedit praesentium velit. Officia aliquid necessitatibus incidunt autem illo dolores. Sed cum nam dolorem sit rerum perspiciatis. In ab sunt mollitia quas aut sequi magni ullam. Et velit illum exercitationem excepturi at velit. Qui et velit quaerat sequi dicta incidunt. Fuga iusto voluptatem quasi eum. Quo ab distinctio et ut. Voluptatum est omnis officiis sit architecto voluptas sed. Voluptatem et odio ipsa libero cum ut id. Atque explicabo necessitatibus officiis exercitationem. Sit voluptatem omnis facere. Natus sit ut assumenda error sit. Dolorem sequi voluptatem vel consectetur quam a nihil. Saepe error natus veniam voluptas consequuntur deserunt consequuntur nihil. Totam dolor et accusamus est ut enim aspernatur. Iure corrupti deserunt delectus consequuntur quibusdam. Repudiandae omnis ad ut quaerat asperiores ipsa. Accusantium consequatur voluptas voluptatem non. Est rem ducimus et voluptatem. Ut culpa doloremque velit. Sequi et aut harum aliquam autem. Maxime libero ullam quis. Amet et et et laborum. Voluptas aut aliquam corrupti quod harum. Autem ut amet deserunt quisquam adipisci autem provident. Sed distinctio totam quos officia. Sequi accusamus aut sunt eligendi delectus. Temporibus aut iste qui et est rerum cupiditate. Quam fugiat qui quam. Itaque magni sed voluptate maxime cumque necessitatibus nulla. Quisquam corrupti dolor qui dolorum. Velit reprehenderit nulla molestiae et libero aut ullam. Odio mollitia fugiat eaque quas. Consequatur ex odit dolorem quisquam saepe voluptates aut. Voluptatem est et sunt fugit similique porro explicabo eaque. Ut beatae quas eligendi ipsam iste. Sed voluptatem nihil praesentium. Laboriosam voluptatem assumenda voluptates ut perferendis. Occaecati rem expedita repellendus molestiae ab at. Ab enim molestiae odit est saepe vel. Ea provident ea necessitatibus facere repudiandae aut. Iure at hic qui rem quia est dolor. Sed nostrum illum laborum tempore voluptatem illum eum. Quidem nam voluptatem eaque. Eum quo nam aliquid temporibus. Rem eius quasi doloribus quia quis aliquam. Enim recusandae et non qui doloribus voluptatem ut.\",\"is_hot\":true,\"published_at\":\"2021-12-10 05:08:12\",\"tags\":[]}]}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Get post",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/v1\/client\/posts\/:slug",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/v1\/client\/posts\/:slug",
+                                    "variable": [
+                                        {
+                                            "id": "slug",
+                                            "key": "slug",
+                                            "value": "9",
+                                            "description": "The slug of the post."
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": null,
+                                "description": "",
+                                "auth": {
+                                    "type": "noauth"
+                                }
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\"data\":{\"title\":\"Fugit ducimus.\",\"slug\":\"consectetur-fuga-velit-sint-maiores-ipsam-culpa-cum-voluptatem\",\"category\":{\"name\":\"Corporis neque.\",\"slug\":\"qui-odit-non-quia\"},\"preview_text\":\"Autem odit iusto quo eveniet id nulla. Excepturi qui beatae voluptas est. Nihil a qui suscipit reprehenderit aspernatur laudantium. Omnis minus sed aut iusto. Fugiat natus sed a tempore. Reiciendis iusto esse suscipit non ea ipsam possimus. Unde est officia ipsa sint ut porro vel. Dignissimos iste corrupti ab omnis impedit aut. Excepturi repellat ratione sit facere laudantium sit. Velit et praesentium sint autem et ducimus.\",\"content\":\"Et enim natus sunt ut excepturi qui. Sequi animi aliquam quibusdam blanditiis assumenda sapiente tenetur. Dicta quas reprehenderit eos et ipsum et. Perferendis ut maiores repellat quia omnis quaerat. Qui nemo aut iste delectus sint veniam nam qui. Qui consequatur excepturi deleniti excepturi itaque sapiente soluta. Illum est eos quam vel quia culpa. Perferendis aspernatur ducimus quaerat et officiis perferendis debitis maxime. Dolor nihil molestiae blanditiis sint. Eum laudantium vitae et eaque. Deleniti amet ut temporibus doloribus. Rerum non vel aliquid dolores reiciendis veritatis eveniet. Qui et ratione voluptatem necessitatibus distinctio quisquam. Est beatae magni mollitia placeat veniam eligendi itaque aliquam. Omnis nemo nulla voluptas magnam quaerat magnam. Aliquid asperiores voluptas quia. Aspernatur officia nesciunt accusantium et consequatur corporis dolorem. Eveniet exercitationem est sunt neque quo sint recusandae. Sapiente voluptate quia aut rerum autem. Qui reiciendis quidem vero magnam sed ea. Odio molestias sint et voluptatem. Quia ea id debitis atque tempora quidem ratione. Blanditiis inventore omnis amet placeat et molestiae sed laudantium. Dolores eum et tempora nisi perspiciatis nihil eveniet. Quia qui non mollitia in ut aut. Neque quia nulla voluptatem quae esse nesciunt perspiciatis. Consequatur saepe sequi quos quam. Provident doloremque veniam voluptatem. Sint vel rerum odio distinctio sit. Nihil ea repellat ut provident aut maiores. Eveniet doloremque eos et est sapiente. Sunt error neque exercitationem ullam. Velit alias voluptatem ut incidunt voluptatem mollitia. Rem unde rem odit commodi suscipit. Ut sit quisquam est laborum temporibus. Ut est incidunt assumenda. Quas eveniet deserunt qui velit impedit fugit facilis. Nulla perspiciatis quae quia veniam dolorem in. Excepturi magnam corrupti enim officia ut nihil odio repudiandae. Consectetur officiis quae itaque tenetur. Incidunt laboriosam sed fugiat nihil optio distinctio nihil. Ut quaerat voluptas velit earum quos. Vel odio quo sunt odit mollitia laboriosam architecto. Sint facere incidunt minus ratione. Consequuntur sed enim fugit rerum consequatur incidunt ducimus. Esse modi et eos similique dignissimos. Accusamus sit neque sed reiciendis rem ut vel. Perferendis ducimus facere iste quod. At dolore inventore ipsam et temporibus officia. Minus itaque dolor numquam non nemo libero. Dolore nam mollitia atque adipisci. Reprehenderit et et sequi laborum. Voluptatem minus similique fuga esse totam vitae et. Ex nostrum ipsam perferendis porro. Consequatur autem voluptatum sint modi eum dolores ipsa. Ipsum molestiae aliquid possimus sequi quisquam velit maxime. Eaque alias cum vel quia ea commodi. Quas non debitis modi nisi. Omnis velit molestiae maiores autem nisi nihil quo ut. Laborum laboriosam dolorem ut similique. Reiciendis aliquam consequatur perspiciatis est ex totam.\",\"is_hot\":true,\"published_at\":\"2021-07-20 04:28:44\",\"tags\":[]}}",
+                                    "name": ""
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "key",
+                "value": null,
+                "type": "string"
+            }
+        ]
+    }
+}
