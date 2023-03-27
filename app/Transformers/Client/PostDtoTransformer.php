@@ -11,13 +11,16 @@ class PostDtoTransformer
 {
     public static function fromFilter(IndexRequest $request): PostFilterDto
     {
+        /** @var string[] $tags */
+        $tags = $request->arrayOrNull('tags');
+
         return new PostFilterDto(
             $request->page(),
-            $request->sortBy(),
+            $request->sortBy('published_at'),
             $request->sortDirection(),
             $request->boolean('is_hot'),
             $request->stringOrNull('category'),
-            $request->array('tags'),
+            $tags,
         );
     }
 }

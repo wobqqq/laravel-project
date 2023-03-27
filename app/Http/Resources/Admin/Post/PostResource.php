@@ -27,8 +27,6 @@ class PostResource extends JsonResource
             'preview_text' => $this->resource->preview_text,
             'content' => $this->resource->content,
             'is_hot' => $this->resource->is_hot,
-            'created_at' => $this->resource->created_at?->toDateTimeString(),
-            'updated_at' => $this->resource->updated_at?->toDateTimeString(),
             'published_at' => $this->resource->published_at->toDateTimeString(),
             'tag_ids' => $this->resource->tags->pluck('id'),
         ];

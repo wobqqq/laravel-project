@@ -72,6 +72,9 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * @return array<string, string>
+     */
     public function getJWTCustomClaims(): array
     {
         return [];

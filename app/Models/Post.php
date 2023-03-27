@@ -8,12 +8,12 @@ use App\DTOs\Admin\Post\PostFilterDto as AdminPostFilterDto;
 use App\DTOs\Client\Post\PostFilterDto as ClientPostFilterDto;
 use App\Enums\PostStatus;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * App\Models\Post
@@ -27,8 +27,6 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @property string $content
  * @property bool $is_hot
  * @property \Illuminate\Support\Carbon $published_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Category $category
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Tag> $tags
  * @property-read int|null $tags_count
@@ -40,7 +38,6 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @method static Builder|Post query()
  * @method static Builder|Post whereCategoryId($value)
  * @method static Builder|Post whereContent($value)
- * @method static Builder|Post whereCreatedAt($value)
  * @method static Builder|Post whereId($value)
  * @method static Builder|Post whereIsHot($value)
  * @method static Builder|Post wherePreviewText($value)
@@ -48,7 +45,6 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @method static Builder|Post whereSlug($value)
  * @method static Builder|Post whereStatus($value)
  * @method static Builder|Post whereTitle($value)
- * @method static Builder|Post whereUpdatedAt($value)
  * @method static Builder|Post withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  *
  * @mixin \Eloquent
@@ -57,6 +53,9 @@ class Post extends Model
 {
     use HasFactory;
     use Sluggable;
+
+    /** @var bool */
+    public $timestamps = false;
 
     /** @var string[] */
     protected $fillable = [
@@ -97,13 +96,16 @@ class Post extends Model
     }
 
     /**
-     * @return MorphToMany<Tag>
+     * @return BelongsToMany<Tag>
      */
-    public function tags(): MorphToMany
+    public function tags(): BelongsToMany
     {
-        return $this->morphToMany(Tag::class, 'taggable');
+        return $this->belongsToMany(Tag::class);
     }
 
+    /**
+     * @return LengthAwarePaginator<Post>
+     */
     public function getAdminFiltered(AdminPostFilterDto $dto): LengthAwarePaginator
     {
         return Post::with('tags')
@@ -111,16 +113,23 @@ class Post extends Model
             ->paginate(page: $dto->page);
     }
 
+    /**
+     * @return LengthAwarePaginator<Post>|LengthAwarePaginator<Model>
+     */
     public function getClientFiltered(ClientPostFilterDto $dto): LengthAwarePaginator
     {
-        return Post::whereStatus(PostStatus::ACTIVE->value)
+        return Post::where(function (Builder|Post $q) {
+            $q->whereStatus(PostStatus::ACTIVE->value)
+                ->useIndex('active');
+        })
             ->when($dto->is_hot, function (Builder|Post $q) use ($dto) {
-                return $q->whereIsHot($dto->is_hot);
+                return $q->whereIsHot($dto->is_hot)
+                    ->useIndex('is_hot');
             })
             ->when($dto->category !== null, function (Builder $q) use ($dto) {
                 $q->whereRelation('category', 'slug', $dto->category);
             })
-            ->when($dto->tags !== null, function (Builder $q) use ($dto) {
+            ->when($dto->tags !== [], function (Builder $q) use ($dto) {
                 $q->whereRelation('tags', function (Builder $q) use ($dto) {
                     $q->whereIn('name', $dto->tags);
                 });

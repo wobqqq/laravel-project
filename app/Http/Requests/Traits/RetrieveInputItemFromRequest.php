@@ -32,10 +32,23 @@ trait RetrieveInputItemFromRequest
             : null;
     }
 
-    public function array(string $key, mixed $default = null): ?array
+    /**
+     * @return int[]|string[]
+     */
+    public function array(string $key): array
     {
         return is_array($this->input($key))
             ? $this->input($key)
-            : $default;
+            : [];
+    }
+
+    /**
+     * @return int[]|string[]
+     */
+    public function arrayOrNull(string $key): array
+    {
+        return is_array($this->input($key))
+            ? $this->input($key)
+            : [];
     }
 }

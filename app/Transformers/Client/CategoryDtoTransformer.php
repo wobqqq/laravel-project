@@ -12,8 +12,8 @@ class CategoryDtoTransformer
     public static function fromFilter(IndexRequest $request): CategoryFilterDto
     {
         return new CategoryFilterDto(
-            $request->sortBy(),
-            $request->sortDirection(),
+            $request->sortBy('name'),
+            $request->sortDirection('asc'),
         );
     }
 }

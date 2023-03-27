@@ -16,16 +16,19 @@ class PostDtoTransformer
 {
     public static function fromRequest(StoreRequest|UpdateRequest $request): PostDto
     {
+        /** @var int[] $tags */
+        $tags = $request->array('tag_ids');
+
         return new PostDto(
             $request->str('title')->toString(),
             $request->stringOrNull('slug'),
-            $request->integer('status', PostStatus::INACTIVE),
+            $request->integer('status', PostStatus::INACTIVE->value),
             $request->integer('category_id'),
             $request->str('preview_text')->toString(),
             $request->str('content')->toString(),
             $request->boolean('is_hot'),
             $request->date('published_at') ?? Carbon::now(),
-            $request->array('tag_ids', []),
+            $tags,
         );
     }
 

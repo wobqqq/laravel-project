@@ -46,7 +46,7 @@
         "code.ide-helper.meta": "@php artisan ide-helper:meta",
         "code.duster.fix": "duster fix",
         "code.duster.lint": "duster lint",
-        "code.php-stan": "@phpstan analyse --memory-limit=512M",
+        "code.php-stan": "vendor/bin/phpstan analyse --memory-limit=512M",
         "code.fix": [
             "@code.ide-helper.generate",
             "@code.ide-helper.models",

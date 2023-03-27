@@ -12,8 +12,8 @@ class TagDtoTransformer
     public static function fromFilter(IndexRequest $request): TagFilterDto
     {
         return new TagFilterDto(
-            $request->sortBy(),
-            $request->sortDirection(),
+            $request->sortBy('name'),
+            $request->sortDirection('asc'),
         );
     }
 }

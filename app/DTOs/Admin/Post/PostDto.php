@@ -17,7 +17,7 @@ class PostDto
         public readonly string $content,
         public readonly bool $is_hot,
         public readonly Carbon $published_at,
-        /** @var int[]|array $tag_ids */
+        /** @var int[] $tag_ids */
         public readonly array $tag_ids
     ) {
     }

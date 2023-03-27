@@ -12,7 +12,8 @@ class PostFilterDto
         public readonly string $sort_direction,
         public readonly bool $is_hot,
         public readonly ?string $category,
-        public readonly ?array $tags,
+        /** @var string[] */
+        public readonly array $tags,
     ) {
     }
 }

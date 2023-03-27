@@ -16,7 +16,7 @@ class StoreRequest extends FormRequest
     use RetrieveInputItemFromRequest;
 
     /**
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|string>
+     * @return array<string, array<int, \Illuminate\Validation\Rules\Enum|string>|string>
      */
     public function rules(): array
     {
