@@ -64,7 +64,7 @@
         "test": [
             "@project.clear",
             "@php -r \"file_exists('.env.testing') || copy('.env.example', '.env.testing');\"",
-            "@project.generate.keys",
+            "@project.generate.keys --env=testing",
             "@db.create.test",
             "@php artisan test --coverage --min=90"
         ],
@@ -79,21 +79,10 @@
             "@code.analyse",
             "@test"
         ],
-        "project.fix_and_analyse": [
-            "@project.fix",
-            "@project.analyse"
-        ],
         "project.clear": [
             "@php artisan cache:clear",
             "@php artisan config:cache",
             "@php artisan config:clear"
-        ],
-        "project.local.init": [
-            "composer install",
-            "@php artisan migrate",
-            "@project.clear",
-            "@code.ide-helper.generate",
-            "@code.ide-helper.meta"
         ],
         "project.generate.api-docs": [
             "@db.create.test",
@@ -102,6 +91,17 @@
         "project.generate.keys": [
             "@php artisan key:generate --ansi",
             "@php artisan jwt:secret --ansi --force"
+        ],
+        "project.local.fix_and_analyse": [
+            "@project.fix",
+            "@project.analyse"
+        ],
+        "project.local.init": [
+            "composer install",
+            "@php artisan migrate",
+            "@project.clear",
+            "@code.ide-helper.generate",
+            "@code.ide-helper.meta"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
