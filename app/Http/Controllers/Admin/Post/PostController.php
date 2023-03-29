@@ -10,6 +10,7 @@ use App\Http\Requests\Admin\Post\StoreRequest;
 use App\Http\Requests\Admin\Post\UpdateRequest;
 use App\Http\Resources\Admin\Post\PostResource;
 use App\Models\Post;
+use App\Queries\Admin\PostQuery;
 use App\Services\PostService;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -29,10 +30,10 @@ class PostController extends Controller
     #[ApiDocs\QueryParam('sort_by', 'string', example: 'id')]
     #[ApiDocs\QueryParam('sort_direction', 'string', description: 'Available "asc" or "desc"', example: 'desc')]
     #[ApiDocs\ResponseFromApiResource(PostResource::class, Post::class, collection: true)]
-    public function index(Post $post, IndexRequest $request): AnonymousResourceCollection
+    public function index(PostQuery $query, IndexRequest $request): AnonymousResourceCollection
     {
         $dto = $request->getDto();
-        $posts = $post->getAdminFiltered($dto);
+        $posts = $query->getFiltered($dto);
 
         return PostResource::collection($posts);
     }

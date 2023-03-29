@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Client\Category\IndexRequest;
 use App\Http\Resources\Client\CategoryResource;
 use App\Models\Category;
+use App\Queries\Client\CategoryQuery;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Knuckles\Scribe\Attributes as ApiDocs;
@@ -22,10 +23,10 @@ class CategoryController extends Controller
     #[ApiDocs\QueryParam('sort_by', 'string', example: 'id')]
     #[ApiDocs\QueryParam('sort_direction', 'string', description: 'Available "asc" or "desc"', example: 'desc')]
     #[ApiDocs\ResponseFromApiResource(CategoryResource::class, Category::class, collection: true)]
-    public function index(Category $category, IndexRequest $request): AnonymousResourceCollection
+    public function index(CategoryQuery $query, IndexRequest $request): AnonymousResourceCollection
     {
         $dto = $request->getDto();
-        $categories = $category->getClientFiltered($dto);
+        $categories = $query->getFiltered($dto);
 
         return CategoryResource::collection($categories);
     }

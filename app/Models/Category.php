@@ -4,13 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\DTOs\Admin\Category\CategoryFilterDto as AdminCategoryFilterDto;
-use App\DTOs\Client\Category\CategoryFilterDto as ClientCategoryFilterDto;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
 
 /**
  * App\Models\Category
@@ -55,22 +51,5 @@ class Category extends Model
                 'source' => 'name',
             ],
         ];
-    }
-
-    /**
-     * @return LengthAwarePaginator<Category>
-     */
-    public function getAdminFiltered(AdminCategoryFilterDto $dto): LengthAwarePaginator
-    {
-        return Category::orderBy($dto->sort_by, $dto->sort_direction)
-            ->paginate(page: $dto->page);
-    }
-
-    /**
-     * @return Collection<int, Category>
-     */
-    public function getClientFiltered(ClientCategoryFilterDto $dto): Collection
-    {
-        return Category::orderBy($dto->sort_by, $dto->sort_direction)->get();
     }
 }

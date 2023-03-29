@@ -10,6 +10,7 @@ use App\Http\Requests\Admin\Tag\StoreRequest;
 use App\Http\Requests\Admin\Tag\UpdateRequest;
 use App\Http\Resources\Admin\TagResource;
 use App\Models\Tag;
+use App\Queries\Admin\TagQuery;
 use App\Services\TagService;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -29,10 +30,10 @@ class TagController extends Controller
     #[ApiDocs\QueryParam('sort_by', 'string', example: 'id')]
     #[ApiDocs\QueryParam('sort_direction', 'string', description: 'Available "asc" or "desc"', example: 'desc')]
     #[ApiDocs\ResponseFromApiResource(TagResource::class, Tag::class, collection: true)]
-    public function index(Tag $tag, IndexRequest $request): AnonymousResourceCollection
+    public function index(TagQuery $query, IndexRequest $request): AnonymousResourceCollection
     {
         $dto = $request->getDto();
-        $tags = $tag->getAdminFiltered($dto);
+        $tags = $query->getFiltered($dto);
 
         return TagResource::collection($tags);
     }

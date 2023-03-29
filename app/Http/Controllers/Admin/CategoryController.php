@@ -10,6 +10,7 @@ use App\Http\Requests\Admin\Category\StoreRequest;
 use App\Http\Requests\Admin\Category\UpdateRequest;
 use App\Http\Resources\Admin\CategoryResource;
 use App\Models\Category;
+use App\Queries\Admin\CategoryQuery;
 use App\Services\CategoryService;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -29,10 +30,10 @@ class CategoryController extends Controller
     #[ApiDocs\QueryParam('sort_by', 'string', example: 'id')]
     #[ApiDocs\QueryParam('sort_direction', 'string', description: 'Available "asc" or "desc"', example: 'desc')]
     #[ApiDocs\ResponseFromApiResource(CategoryResource::class, Category::class, collection: true)]
-    public function index(Category $category, IndexRequest $request): AnonymousResourceCollection
+    public function index(CategoryQuery $query, IndexRequest $request): AnonymousResourceCollection
     {
         $dto = $request->getDto();
-        $categories = $category->getAdminFiltered($dto);
+        $categories = $query->getFiltered($dto);
 
         return CategoryResource::collection($categories);
     }

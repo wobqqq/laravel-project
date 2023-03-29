@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Client\Post\IndexRequest;
 use App\Http\Resources\Client\PostResource;
 use App\Models\Post;
+use App\Queries\Client\PostQuery;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Knuckles\Scribe\Attributes as ApiDocs;
@@ -27,10 +28,10 @@ class PostController extends Controller
     #[ApiDocs\QueryParam('sort_by', 'string', example: 'id')]
     #[ApiDocs\QueryParam('sort_direction', 'string', description: 'Available "asc" or "desc"', example: 'desc')]
     #[ApiDocs\ResponseFromApiResource(PostResource::class, Post::class, collection: true)]
-    public function index(Post $post, IndexRequest $request): AnonymousResourceCollection
+    public function index(PostQuery $query, IndexRequest $request): AnonymousResourceCollection
     {
         $dto = $request->getDto();
-        $posts = $post->getClientFiltered($dto);
+        $posts = $query->getFiltered($dto);
 
         return PostResource::collection($posts);
     }

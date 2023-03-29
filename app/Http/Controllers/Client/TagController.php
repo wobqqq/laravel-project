@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Client\Tag\IndexRequest;
 use App\Http\Resources\Client\TagResource;
 use App\Models\Tag;
+use App\Queries\Client\TagQuery;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Knuckles\Scribe\Attributes as ApiDocs;
@@ -22,10 +23,10 @@ class TagController extends Controller
     #[ApiDocs\QueryParam('sort_by', 'string', example: 'id')]
     #[ApiDocs\QueryParam('sort_direction', 'string', description: 'Available "asc" or "desc"', example: 'desc')]
     #[ApiDocs\ResponseFromApiResource(TagResource::class, Tag::class, collection: true)]
-    public function index(Tag $tag, IndexRequest $request): AnonymousResourceCollection
+    public function index(TagQuery $query, IndexRequest $request): AnonymousResourceCollection
     {
         $dto = $request->getDto();
-        $tags = $tag->getClientFiltered($dto);
+        $tags = $query->getFiltered($dto);
 
         return TagResource::collection($tags);
     }
