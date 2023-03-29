@@ -18,6 +18,16 @@ class PostQuery
     ) {
     }
 
+    public function getBySlug(string $slug): Post
+    {
+        $post = Post::whereSlug($slug)
+            ->whereStatus(PostStatus::ACTIVE->value)
+            ->firstOrFail();
+        $post->load('category', 'tags');
+
+        return $post;
+    }
+
     /**
      * @return LengthAwarePaginator<Post>|LengthAwarePaginator<Model>
      */

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Client;
 
-use App\Enums\PostStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Client\Post\IndexRequest;
 use App\Http\Resources\Client\PostResource;
@@ -40,12 +39,9 @@ class PostController extends Controller
      * Get post
      */
     #[ApiDocs\ResponseFromApiResource(PostResource::class, Post::class)]
-    public function show(string $slug): JsonResource
+    public function show(string $slug, PostQuery $query): JsonResource
     {
-        $post = Post::whereSlug($slug)
-            ->whereStatus(PostStatus::ACTIVE->value)
-            ->firstOrFail();
-        $post->load('category', 'tags');
+        $post = $query->getBySlug($slug);
 
         return PostResource::make($post);
     }
